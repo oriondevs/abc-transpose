@@ -1,7 +1,7 @@
 {
   "name": "abc-transpose",
   "version": "1.0.0",
-  "description": "Change key of a abc music",
+  "description": "Change key of an abc music",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,6 @@
     "transpose"
   ],
   "author": "Luís Eduardo",
+  "homepage": "https://github.com/oriondevs/abc-transpose",
   "license": "MIT"
 }
