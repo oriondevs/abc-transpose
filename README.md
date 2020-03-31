@@ -6,18 +6,18 @@ A simple lib to shift music tone (up or down) using the **abc notation**. If you
 
 Installation uses the npm package manager. Just type the following command after installing npm.
 
-`npm install abc-transpose`
+```$ npm install abc-transpose```
 
 
 ## Usage
 
-`up(abc string, transpose int)`: Transpose up abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Cmajor to Dmajor = 1, Emajor to Gmajor = 2.
+`up(abc: string, transpose: int)`: Transpose up abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Cmajor to Dmajor = 1, Emajor to Gmajor = 2.
 
-`down(abc string, transpose int)`: Transpose down abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Bmajor to Cmajor = 1, Gmajor to Emajor = 2.
+`down(abc: string, transpose: int)`: Transpose down abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Bmajor to Cmajor = 1, Gmajor to Emajor = 2.
 
 ## Examples
 
-Read an abc file:
+Read an abc file (node-js):
 ```js
 const abc = require("abc-transpose")
 
@@ -43,6 +43,15 @@ fs.readFile('/tmp/cooleys.abc', (err, data) => {
     }
 })
 ```
+## Changelog
+
+* 1.0.2 - Fix absent newline into abc/note field.
+* 1.0.1 - added up and down functions.
+* 1.0.0 - initial version.
+
+## Roadmap
+
+* Typescript support (?)
 
 ## License
 

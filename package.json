@@ -1,17 +1,24 @@
 {
-  "name": "abc-transpose",
-  "version": "1.0.0",
-  "description": "Change key of an abc music",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "abc",
-    "music",
-    "transpose"
-  ],
-  "author": "Luís Eduardo",
-  "homepage": "https://github.com/oriondevs/abc-transpose",
-  "license": "MIT"
+    "name": "abc-transpose",
+    "version": "1.0.2",
+    "description": "Change key of an abc music",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oriondevs/abc-transpose.git"
+    },
+    "keywords": [
+        "abc",
+        "music",
+        "transpose"
+    ],
+    "author": "Luís Eduardo",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/oriondevs/abc-transpose/issues"
+    },
+    "homepage": "https://github.com/oriondevs/abc-transpose#readme"
 }

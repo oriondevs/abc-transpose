@@ -35,6 +35,7 @@ const transposeTone = function(abc, transpose, method) {
     let abcout;
     const group = /[a-zA-Z]:\s*\w/;
     const key = /K:\s*(\w)\s*(\w*)/;
+    let map;
 
     if (method === "up") map = mapup;
     else map = mapdown;
@@ -49,12 +50,12 @@ const transposeTone = function(abc, transpose, method) {
                 const k = key.exec(line);
                 if (k) {
                     if (method === "up") {
-                        if (k[1] === "B") abcout += "K: C" + k[2] + "\r\n";
-                        else abcout += "K: " + map[k[1]] + k[2] + "\r\n";
+                        if (k[1] === "B") abcout += "K:C" + k[2] + "\r\n";
+                        else abcout += "K:" + map[k[1]] + k[2] + "\r\n";
                     }
                     if (method === "down") {
-                        if (k[1] === "C") abcout += "K: B" + k[2] + "\r\n";
-                        else abcout += "K: " + map[k[1]] + k[2] + "\r\n";
+                        if (k[1] === "C") abcout += "K:B" + k[2] + "\r\n";
+                        else abcout += "K:" + map[k[1]] + k[2] + "\r\n";
                     }
                 } else {
                     abcout += line + "\r\n";
@@ -77,7 +78,8 @@ const transposeTone = function(abc, transpose, method) {
                             } else abcout += map[line[c]];
                         }
                     } else {
-                        abcout += line[c];
+                        if (c == line.length - 1) abcout += line[c] + '\r\n';
+                        else abcout += line[c];
                     }
                 }
             }
