@@ -1,0 +1,16 @@
+{
+  "name": "abc-transpose",
+  "version": "1.0.0",
+  "description": "Change key of a abc music",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "abc",
+    "music",
+    "transpose"
+  ],
+  "author": "Luís Eduardo",
+  "license": "MIT"
+}
