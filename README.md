@@ -47,11 +47,13 @@ fs.readFile('/tmp/cooleys.abc', (err, data) => {
 
 * 1.0.2 - Fix absent newline into abc/note field.
 * 1.0.1 - added up and down functions.
-* 1.0.0 - initial version.
+* 1.0.0 - initial version (skeleton, please do not use it).
 
 ## Roadmap
 
 * Typescript support (?)
+* Add tests
+* Add CI/CD
 
 ## License
 
