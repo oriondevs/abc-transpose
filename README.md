@@ -13,7 +13,7 @@ Installation uses the npm package manager. Just type the following command after
 
 `up(abc: string, transpose: int)`: Transpose up abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Cmajor to Dmajor = 1, Emajor to Gmajor = 2.
 
-`down(abc: string, transpose: int)`: Transpose down abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Bmajor to Cmajor = 1, Gmajor to Emajor = 2.
+`down(abc: string, transpose: int)`: Transpose down abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Cmajor to Bmajor = 1, Gmajor to Emajor = 2.
 
 ## Examples
 
@@ -54,9 +54,8 @@ fs.readFile('/tmp/cooleys.abc', (err, data) => {
 * Typescript support (?)
 * Add tests
 * Add CI/CD
+* Minify index.js (?)
 
 ## License
 
 abc-transpose is available under the MIT license.
-
-
