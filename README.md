@@ -54,7 +54,7 @@ fs.readFile('/tmp/cooleys.abc', (err, data) => {
 
 * Typescript support (?)
 * Add tests
-* Add CI/CD
+* Add CI/CD (on Progress)
 * Minify index.js (?)
 
 ## License
