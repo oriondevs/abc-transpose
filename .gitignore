@@ -1,3 +1,3 @@
-#Test files
-abc/
+# Test files
 node_modules
+.nyc_output
