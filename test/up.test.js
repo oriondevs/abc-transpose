@@ -5,7 +5,8 @@ const fs = require("fs")
 
 const readFile = promisify(fs.readFile);
 
-let originalFile = {}
+let originalFile
+
 describe('Transpose up suit test', function() {
     this.beforeAll(async() => {
         originalFile = await readFile('./test/abc/cooleys.abc', 'utf-8')

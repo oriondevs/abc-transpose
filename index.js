@@ -34,6 +34,7 @@ const transposeTone = function(abc, transpose, method) {
 
     let abcout;
     const group = /[a-zA-Z]:\s*\w/;
+    const staff = /%/;
     const key = /K:\s*(\w)\s*(\w*)/;
     let map;
 
@@ -61,25 +62,27 @@ const transposeTone = function(abc, transpose, method) {
                     abcout += line + "\r\n";
                 }
             } else {
-                for (let c = 0; c < line.length; c++) {
-                    if (map[line[c]]) {
-                        if (method === "up") {
-                            // Remove , if exists
-                            if (line[c] === "B" && line[c + 1] === ",") {
-                                console.log("OPA");
-                                abcout += "C";
-                                c += 1;
-                            } else abcout += map[line[c]];
+                if (staff.test(line)) abcout += line + "\r\n";
+                else {
+                    for (let c = 0; c < line.length; c++) {
+                        if (map[line[c]]) {
+                            if (method === "up") {
+                                // Remove , if exists
+                                if (line[c] === "B" && line[c + 1] === ",") {
+                                    abcout += "C";
+                                    c += 1;
+                                } else abcout += map[line[c]];
+                            } else {
+                                // Remove ' if exists
+                                if (line[c] === "c" && line[c + 1] === "'") {
+                                    abcout += "b";
+                                    c += 1;
+                                } else abcout += map[line[c]];
+                            }
                         } else {
-                            // Remove ' if exists
-                            if (line[c] === "c" && line[c + 1] === "'") {
-                                abcout += "b";
-                                c += 1;
-                            } else abcout += map[line[c]];
+                            if (c == line.length - 1) abcout += line[c] + '\r\n';
+                            else abcout += line[c];
                         }
-                    } else {
-                        if (c == line.length - 1) abcout += line[c] + '\r\n';
-                        else abcout += line[c];
                     }
                 }
             }

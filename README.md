@@ -45,6 +45,7 @@ fs.readFile('/tmp/cooleys.abc', (err, data) => {
 ```
 ## Changelog
 
+* 1.0.3 - Remove console.log('Ok') and ignore lines with %.
 * 1.0.2 - Fix absent newline into abc/note field.
 * 1.0.1 - added up and down functions.
 * 1.0.0 - initial version (skeleton, please do not use it).
