@@ -1,7 +1,9 @@
 language:
     node_js
+node_js:
+    - 12
 install:
-    - npm i -g codecov
+    - npm i -g codecov nyc mocha
 script:
     - npm test
     - codecov
