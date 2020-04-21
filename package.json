@@ -4,7 +4,7 @@
     "description": "Change key of an abc music",
     "main": "index.js",
     "scripts": {
-        "test": "nyc mocha"
+        "test": "nyc --reporter=html --reporter=text mocha"
     },
     "repository": {
         "type": "git",
