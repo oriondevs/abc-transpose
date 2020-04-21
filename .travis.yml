@@ -6,4 +6,5 @@ install:
     - npm i -g codecov nyc mocha
 script:
     - npm test
+    - npm run report
     - codecov
