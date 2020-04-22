@@ -8,3 +8,5 @@ script:
     - npm test
     - npm run report
     - codecov
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

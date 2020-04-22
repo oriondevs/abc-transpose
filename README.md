@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/oriondevs/abc-transpose.svg?branch=master)](https://travis-ci.com/oriondevs/abc-transpose)
+
 # abc-transpose
 
 A simple lib to shift music tone (up or down) using the **abc notation**. If you do not know the abc notation, please start reading this [link](https://abcnotation.com/examples).
@@ -28,7 +30,7 @@ fs.readFile('/tmp/cooleys.abc', (err, data) => {
         // Transpose data to next tone (1 up)
         const onetone = abc.up(data)
         console.log(onetone)
-        
+
         // Transpose data to 2 tones up
         const twotone= abc.up(data, 2)
         console.log(twotone)
