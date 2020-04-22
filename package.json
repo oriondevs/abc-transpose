@@ -1,8 +1,9 @@
 {
     "name": "abc-transpose",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Change key of an abc music",
     "main": "index.js",
+    "files": ["index.js"],
     "scripts": {
         "test": "nyc mocha",
         "report": "nyc report --reporter=text-lcov > coverage.lcov"
