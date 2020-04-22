@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/oriondevs/abc-transpose.svg?branch=master)](https://travis-ci.com/oriondevs/abc-transpose)
-
+[![Coverage Status](https://coveralls.io/repos/github/oriondevs/abc-transpose/badge.svg?branch=master)](https://coveralls.io/github/oriondevs/abc-transpose?branch=master) [Codecov](https://codecov.io/gh/oriondevs/abc-transpose)
 # abc-transpose
 
 A simple lib to shift music tone (up or down) using the **abc notation**. If you do not know the abc notation, please start reading this [link](https://abcnotation.com/examples).
@@ -56,7 +56,7 @@ fs.readFile('/tmp/cooleys.abc', (err, data) => {
 
 * Typescript support (?)
 * Add tests
-* Add CI/CD (on Progress)
+* Add CI/CD (Done)
 * Minify index.js (?)
 
 ## License
