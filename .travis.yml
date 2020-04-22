@@ -3,10 +3,9 @@ language:
 node_js:
     - 12
 install:
-    - npm i -g codecov nyc mocha
+    - npm i -g codecov nyc mocha coveralls
 script:
     - npm test
     - npm run report
     - codecov
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+    - coveralls coverage.lcov
