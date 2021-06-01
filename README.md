@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.com/oriondevs/abc-transpose.svg?branch=master)](https://travis-ci.com/oriondevs/abc-transpose)
-[![Coverage Status](https://coveralls.io/repos/github/oriondevs/abc-transpose/badge.svg?branch=master)](https://coveralls.io/github/oriondevs/abc-transpose?branch=master) [Codecov](https://codecov.io/gh/oriondevs/abc-transpose)
+[![Coverage Status](https://coveralls.io/repos/github/oriondevs/abc-transpose/badge.svg?branch=master)](https://coveralls.io/github/oriondevs/abc-transpose?branch=master)
+[![Coverage Status](https://img.shields.io/codecov/c/github/oriondevs/abc-transpose/master.svg)](https://codecov.io/gh/oriondevs/abc-transpose?branch=master)
+
 # abc-transpose
 
 A simple lib to shift music tone (up or down) using the **abc notation**. If you do not know the abc notation, please start reading this [link](https://abcnotation.com/examples).
