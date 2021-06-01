@@ -3,7 +3,9 @@
     "version": "1.0.3",
     "description": "Change key of an abc music",
     "main": "index.js",
-    "files": ["index.js"],
+    "files": [
+        "index.js"
+    ],
     "scripts": {
         "test": "nyc mocha",
         "report": "nyc report --reporter=text-lcov > coverage.lcov"
@@ -24,6 +26,9 @@
     },
     "homepage": "https://github.com/oriondevs/abc-transpose#readme",
     "devDependencies": {
+        "eslint": "^7.27.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.23.4",
         "mocha": "^7.1.1",
         "nyc": "^15.0.1"
     }
