@@ -9,7 +9,7 @@ R:reel
 %%tabrhstyle modern
 M:4/4
 L:1/8
-K:Gdor
+K: G clef=treble-8
 |:F2|Gddc d2 Gd|d2 cd fdcB|AFcF dFcF|AFcF fcAF|
 Gddc d2 Gd|d2 cd fgab|c'age fdcA|FGAF G2:|
 |:ba|gd d2 gabg|gd d2 bgfd|c2 Ac FcAc|c2 Ac fgab|

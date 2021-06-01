@@ -47,6 +47,7 @@ fs.readFile('/tmp/cooleys.abc', (err, data) => {
 ```
 ## Changelog
 
+* 1.0.4 - Refactore and add support to to windows-unix linestyle
 * 1.0.3 - Remove console.log('Ok') and ignore lines with %.
 * 1.0.2 - Fix absent newline into abc/note field.
 * 1.0.1 - added up and down functions.
