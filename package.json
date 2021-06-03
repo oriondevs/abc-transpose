@@ -1,6 +1,6 @@
 {
     "name": "abc-transpose",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Change key of an abc music",
     "main": "index.js",
     "files": [
