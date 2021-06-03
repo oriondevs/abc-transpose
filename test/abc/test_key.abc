@@ -1,0 +1,17 @@
+X:1
+T:Cooley's
+Z:Jeremy
+S:https://thesession.org/tunes/1#setting1
+R:reel
+%: Fjordvalsen
+%: Fjordvalsen
+%%staffsep 2cm
+%%tabrhstyle modern
+M:4/4
+L:1/8
+K: C clef=treble-8
+K: clef=treble-8 octave=-1 stafflines=5 score=CG sound=DC instrument=_B/c clef-c=bass
+K: strangeKey
+|[CCC]C,,,D,,,E,,,F,,, G,,,A,,,B,,,C,,|D,,E,,F,,G,, A,,B,,C,D,|E,F,G,A, !decoration!B,CDE| % This is a comment
++: And this is the rest of comment
+|: CDEF GABc|defg abc'|[r:and this is a remark]d'e'f'g' a'b'c''|d''e''f''g'' a''b''c''':|
