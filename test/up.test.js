@@ -29,6 +29,12 @@ describe('Transpose up suit test', function () {
     assert.deepStrictEqual(transposed2File, String(transposed));
   });
 
+  it('Transpose 2 semitones up using 2down', async () => {
+    const transposed2File = await readFile('./test/abc/cooleys2down.abc', 'utf-8');
+    const transposed = abc.up(transposed2File, 2);
+    assert.deepStrictEqual(originalFile, String(transposed));
+  });
+
   it('Transpose 12 semitones up', async () => {
     const testFile = await readFile('./test/abc/test.abc', 'utf-8');
     const transposed12File = await readFile('./test/abc/test12up.abc', 'utf-8');

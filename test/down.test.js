@@ -9,7 +9,7 @@ let originalFile;
 
 describe('Transpose down suit test', function () {
   this.beforeAll(async () => {
-    originalFile = await readFile('./test/abc/cooleys2up.abc', 'utf-8');
+    originalFile = await readFile('./test/abc/cooleys.abc', 'utf-8');
   });
 
   it('Transpose 0 semitone down', async () => {
@@ -18,16 +18,22 @@ describe('Transpose down suit test', function () {
   });
 
   it('Transpose 1 semitone down', async () => {
-    const testFile = await readFile('./test/abc/cooleys1up.abc', 'utf-8');
-    const transposed1File = await readFile('./test/abc/cooleys.abc', 'utf-8');
-    const transposed = abc.down(testFile, 1);
+    const transposed1File = await readFile('./test/abc/cooleys1down.abc', 'utf-8');
+    const transposed = abc.down(originalFile, 1);
     assert.deepStrictEqual(transposed1File, String(transposed));
   });
 
   it('Transpose 2 semitones down', async () => {
-    const transposed1File = await readFile('./test/abc/cooleys.abc', 'utf-8');
+    const transposed2File = await readFile('./test/abc/cooleys2down.abc', 'utf-8');
     const transposed = abc.down(originalFile, 2);
-    assert.deepStrictEqual(transposed1File, String(transposed));
+    assert.deepStrictEqual(transposed2File, String(transposed));
+  });
+
+  it('Transpose 2 semitones down using 2up', async () => {
+    const testFile = await readFile('./test/abc/cooleys2up.abc', 'utf-8');
+    const transposed2File = await readFile('./test/abc/cooleys.abc', 'utf-8');
+    const transposed = abc.down(testFile, 2);
+    assert.deepStrictEqual(transposed2File, String(transposed));
   });
 
   it('Transpose 12 semitones down', async () => {

@@ -9,8 +9,8 @@ R:reel
 %%tabrhstyle modern
 M:4/4
 L:1/8
-K: F# clef=treble-8
-|:E2|F^c^c^B c^2 F^c^|c^2 Bc^ ec^BA|GEBE c^EBE|GEBE eBGE|
-F^c^c^B c^2 F^c^|c^2 Bc^ ef^ga|bgf^d ec^BG|EF^GE F^2:|
-|:ag|f^c^ c^2 f^gaf^|f^c^ c^2 af^ec^|B2 GB EBGB|B2 GB ef^ga|
-f^c^ c^2 f^c^ac^|f^c^ c^2 ef^ga|bgf^d ec^BG|EF^GE d'2:|
+K: E clef=treble-8
+|:E2|^F^c^cB ^c2 ^F^c|^c2 B^c e^cBA|GEBE ^cEBE|GEBE eBGE|
+^F^c^cB ^c2 ^F^c|^c2 B^c e^fga|bg^fd e^cBG|E^FGE ^F2:|
+|:ag|^f^c ^c2 ^fga^f|^f^c ^c2 a^fe^c|B2 GB EBGB|B2 GB e^fga|
+^f^c ^c2 ^f^ca^c|^f^c ^c2 e^fga|bg^fd e^cBG|E^FGE d'2:|

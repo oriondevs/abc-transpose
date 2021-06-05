@@ -1,7 +1,6 @@
 const header = /^[a-zA-Z]:\s*\w/;
 const comment = /^%/;
-const continuation = /\+:/;
-const key = /^K:\s*\w*/;
+const continuation = /^\+:/;
 
 const clef = [
   'C',
@@ -24,67 +23,20 @@ const notes = [
   'b',
 ];
 
-const addSharpOrFlat = (line, l, method) => {
-  let accident;
-  let reverseAccident;
+const addSharpOrFlat = (note, method) => {
   let borderNotes = [];
+  let accident;
   if (method > 0) {
     accident = '^';
-    reverseAccident = '_';
     borderNotes = ['E', 'e', 'B'];
   } else {
     accident = '_';
-    reverseAccident = '^';
     borderNotes = ['F', 'f', 'c'];
   }
-
-  if (line[l + 1] === reverseAccident) {
-    return {
-      lineOut: line[l],
-      l: l + 1,
-    };
+  if (note === borderNotes[0] || note === borderNotes[1] || note === borderNotes[2]) {
+    return notes[notes.indexOf(note) + method];
   }
-  if (line[l + 1] === accident) {
-    return {
-      lineOut: notes[notes.indexOf(line[l]) + method],
-      l: l + 1,
-    };
-  }
-  if (line[l] === borderNotes[0]
-    || line[l] === borderNotes[1]
-    || line[l] === borderNotes[2]) {
-    return {
-      lineOut: notes[notes.indexOf(line[l]) + method],
-      l,
-    };
-  }
-  return {
-    lineOut: `${line[l]}${accident}`,
-    l,
-  };
-};
-
-const keyTranspose = (line, method) => {
-  const keyPattern = /K:\s*([abcdefgABCDEFG][b#]?)/;
-  const clefAndTranspositionPattern = /K:\s*clef=|staffline=|octave=|score=|sound=|shift=|instrument=|clef-c/;
-
-  if (clefAndTranspositionPattern.test(line)) {
-    return line;
-  }
-  if (keyPattern.test(line)) {
-    return line.replace(keyPattern, (match, token) => {
-      const transformedTokenInLine = token.replace('#', '^').replace('b', '_');
-      let lineOut;
-      if (transformedTokenInLine[0] === 'C' && method < 0) {
-        lineOut = 'B';
-      } else {
-        lineOut = addSharpOrFlat(transformedTokenInLine, 0, method).lineOut;
-      }
-      const transformedLineOutInKey = lineOut.toUpperCase().replace('^', '#').replace('_', 'b');
-      return match.replace(token, transformedLineOutInKey);
-    });
-  }
-  return line;
+  return `${accident}${note}`;
 };
 
 const tuneBodyTranspose = (line, method) => {
@@ -99,49 +51,62 @@ const tuneBodyTranspose = (line, method) => {
         } else if (line[l] === 'b' && line[l + 1] !== '_') {
           lineOut += 'c\'';
         } else {
-          const sharp = addSharpOrFlat(line, l, method);
-          lineOut += sharp.lineOut;
-          l = sharp.l;
+          lineOut += addSharpOrFlat(line[l], method);
         }
         // method down
       } else {
         if (line[l] === 'c' && line[l + 1] === '\'') {
           lineOut += 'b';
           l++;
-        } else if (line[l] === 'C' && line[l + 1] !== '^') {
+        } else if (line[l] === 'C' && line[l - 1] !== '^') {
           lineOut += 'B,';
         } else {
-          const sharp = addSharpOrFlat(line, l, method);
-          lineOut += sharp.lineOut;
-          l = sharp.l;
+          lineOut += addSharpOrFlat(line[l], method);
         }
       }
     } else {
-      // Verify if symbol is a % and ignore all the rest
-      if (line[l] === '%') {
-        lineOut += line.substring(l);
-        break;
-      }
-      // verify if symbol is a !decoration!
-      if (line[l] === '!') {
-        lineOut += line[l];
+      // Verify if symbol is an accidental
+      if (line[l] === '^' || line[l] === '_') {
+        let accident;
+        if (method > 0) {
+          accident = '^';
+        } else {
+          accident = '_';
+        }
+
+        if (line[l] === accident) {
+          lineOut += notes[notes.indexOf(line[l + 1]) + method];
+        } else {
+          lineOut += line[l + 1];
+        }
         l++;
-        while (line[l] !== '!') {
+      } else {
+        // Verify if symbol is a % and ignore all the rest
+        if (line[l] === '%') {
+          lineOut += line.substring(l);
+          break;
+        }
+        // verify if symbol is a !decoration!
+        if (line[l] === '!') {
           lineOut += line[l];
           l++;
-        }
-      }
-      // Verify if symbol is a [r: remark]
-      if (line[l] === '[') {
-        // If is [r ... is a remark, else is a chord
-        if (line[l + 1] === 'r') {
-          while (line[l] !== ']') {
+          while (line[l] !== '!') {
             lineOut += line[l];
             l++;
           }
         }
+        // Verify if symbol is a [r: remark]
+        if (line[l] === '[') {
+          // If is [r ... is a remark, else is a chord
+          if (line[l + 1] === 'r') {
+            while (line[l] !== ']') {
+              lineOut += line[l];
+              l++;
+            }
+          }
+        }
+        lineOut += line[l];
       }
-      lineOut += line[l];
     }
   }
   return lineOut;
@@ -153,9 +118,6 @@ const transposeTone = (abc, transpose, method) => {
   for (let x = 0; x < transpose; x++) {
     const abcListTransposed = abcList.map((line) => {
       if (header.test(line)) {
-        if (key.test(line)) {
-          return keyTranspose(line, method);
-        }
         return line;
       }
       if (comment.test(line)) {

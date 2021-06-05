@@ -4,7 +4,7 @@
 
 # abc-transpose
 
-A simple lib to shift music tone (up or down) using the **abc notation**. If you do not know the abc notation, please start reading this [link](https://abcnotation.com/examples).
+A simple lib to shift music notes (up or down) using the **abc notation**. If you do not know the abc notation, please start reading this [link](https://abcnotation.com/examples).
 
 ## Installation
 
@@ -15,9 +15,9 @@ Installation uses the npm package manager. Just type the following command after
 
 ## Usage
 
-`up(abc: string, transpose: int)`: Transpose up abc notes, changing the key and notes. `transpose` indicates the number of semitones that is transposed. For example: Cmajor to Dmajor = 2 semitones, Emajor to Gmajor = 3 semitones.
+`up(abc: string, transpose: int)`: Transpose up abc notes, changing all notes. `transpose` indicates the number of semitones that is transposed. For example: C to D = 2 semitones, E to G = 3 semitones without change the Key.
 
-`down(abc: string, transpose: int)`: Transpose down abc notes, changing the key and notes. `transpose` indicates the number of semitonesthat is transposed. For example: Cmajor to Bmajor = -1 semitone, Gmajor to Emajor = -3 semitones.
+`down(abc: string, transpose: int)`: Transpose down abc notes, changing all notes. `transpose` indicates the number of semitones that is transposed. For example: C to B = -1 semitone, G to E = -3 semitones without change the Key.
 
 The table below shows the difference between 2 notes in semitones:
 
@@ -27,8 +27,11 @@ The table below shows the difference between 2 notes in semitones:
 
 E.g:
 (up) C to C = 0 semitone
+
 (up) C# to D# = | 3 - 1 | = 2 semitones
+
 (up) F# to B = | 11 - 6 | = 5 semitones 
+
 (down) B to A = | 11 - 9 | * -1 = -2 semitones
 
 ## Examples

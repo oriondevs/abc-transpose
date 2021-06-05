@@ -1,0 +1,16 @@
+X:1
+T:Cooley's
+Z:Jeremy
+S:https://thesession.org/tunes/1#setting1
+R:reel
+%: Fjordvalsen
+%: Fjordvalsen
+%%staffsep 2cm
+%%tabrhstyle modern
+M:4/4
+L:1/8
+K: E clef=treble-8
+|:_D2|_E_B_B_A _B2 _E_B|_B2 _A_B _d_B_A_G|E_D_A_D _B_D_A_D|E_D_A_D _d_AE_D|
+_E_B_B_A _B2 _E_B|_B2 _A_B _d_ee_g|_ae_eB _d_B_AE|_D_EE_D _E2:|
+|:_ge|_e_B _B2 _ee_g_e|_e_B _B2 _g_e_d_B|_A2 E_A _D_AE_A|_A2 E_A _d_ee_g|
+_e_B _B2 _e_B_g_B|_e_B _B2 _d_ee_g|_ae_eB _d_B_AE|_D_EE_D b2:|
