@@ -15,21 +15,9 @@ Installation uses the npm package manager. Just type the following command after
 
 ## Usage
 
-`up(abc: string, transpose: int)`: Transpose up abc notes, changing the key and notes. `transpose` indicates the number of semitones that is transposed. For example: Cmajor to Dmajor = 2 semitones, Emajor to Gmajor = 3 semitones.
+`up(abc: string, transpose: int)`: Transpose up abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Cmajor to Dmajor = 1, Emajor to Gmajor = 2.
 
-`down(abc: string, transpose: int)`: Transpose down abc notes, changing the key and notes. `transpose` indicates the number of semitonesthat is transposed. For example: Cmajor to Bmajor = -1 semitone, Gmajor to Emajor = -3 semitones.
-
-The table below shows the difference between 2 notes in semitones:
-
-| NOTES | C | C#\|Db | D | D#\|Eb | E | F | F#\|Gb | G | G#\|Ab | A | A#\Bb | B | C |
-| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| C | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 
-
-E.g:
-(up) C to C = 0 semitone
-(up) C# to D# = | 3 - 1 | = 2 semitones
-(up) F# to B = | 11 - 6 | = 5 semitones 
-(down) B to A = | 11 - 9 | * -1 = -2 semitones
+`down(abc: string, transpose: int)`: Transpose down abc notes, changing the key and notes. `transpose` indicates the number of tones that is transposed. For example: Cmajor to Bmajor = 1, Gmajor to Emajor = 2.
 
 ## Examples
 
@@ -41,30 +29,26 @@ const fs = require("fs")
 
 fs.readFile('/tmp/cooleys.abc', (err, data) => {
     if (!err) {
-        // Transpose data to next semitone (1 up)
+        // Transpose data to next tone (1 up)
         const onetone = abc.up(data)
         console.log(onetone)
 
-        // Transpose data to 2 semitones up
+        // Transpose data to 2 tones up
         const twotone= abc.up(data, 2)
         console.log(twotone)
 
-        // Transpose data 1 semitone down
+        // Transpose data 1 tone down
         const onedown = abc.down(data)
         console.log(onedown)
 
-        // Transpose data 7 semitones down
+        // Transpose data 7 tones down
         const sevendown = abc.down(data, 7)
         console.log(sevendown)
     }
 })
 ```
-
 ## Changelog
 
-* 1.0.6 - Add semitones support (^, _).
-Breaking changes:
-    - The transpose now works with semitone (half tone).
 * 1.0.5 - Refactore and add support comments(% ....), remark( [r: this is a remark]), decoration (!trill!) and field continuation (+: ...).
 * 1.0.4 - Refactore and add support to to windows-unix linestyle.
 * 1.0.3 - Remove console.log('Ok') and ignore lines with %.
@@ -75,10 +59,10 @@ Breaking changes:
 ## Roadmap
 
 * Typescript support (?)
-* Add tests (Done)
+* Add tests
 * Add CI/CD (Done)
 * Minify index.js (?)
 
 ## License
 
-`abc-transpose` is available under the MIT license.
+abc-transpose is available under the MIT license.
