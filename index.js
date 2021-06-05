@@ -1,7 +1,7 @@
 const header = /^[a-zA-Z]:\s*\w/;
 const comment = /^%/;
 const continuation = /\+:/;
-const key = /^K:\s*\w*/;
+const key = /K:\s*\w/;
 
 const clef = [
   'C',
@@ -24,67 +24,23 @@ const notes = [
   'b',
 ];
 
-const addSharpOrFlat = (line, l, method) => {
-  let accident;
-  let reverseAccident;
-  let borderNotes = [];
-  if (method > 0) {
-    accident = '^';
-    reverseAccident = '_';
-    borderNotes = ['E', 'e', 'B'];
-  } else {
-    accident = '_';
-    reverseAccident = '^';
-    borderNotes = ['F', 'f', 'c'];
-  }
-
-  if (line[l + 1] === reverseAccident) {
-    return {
-      lineOut: line[l],
-      l: l + 1,
-    };
-  }
-  if (line[l + 1] === accident) {
-    return {
-      lineOut: notes[notes.indexOf(line[l]) + method],
-      l: l + 1,
-    };
-  }
-  if (line[l] === borderNotes[0]
-    || line[l] === borderNotes[1]
-    || line[l] === borderNotes[2]) {
-    return {
-      lineOut: notes[notes.indexOf(line[l]) + method],
-      l,
-    };
-  }
-  return {
-    lineOut: `${line[l]}${accident}`,
-    l,
-  };
-};
-
 const keyTranspose = (line, method) => {
-  const keyPattern = /K:\s*([abcdefgABCDEFG][b#]?)/;
-  const clefAndTranspositionPattern = /K:\s*clef=|staffline=|octave=|score=|sound=|shift=|instrument=|clef-c/;
-
-  if (clefAndTranspositionPattern.test(line)) {
-    return line;
-  }
-  if (keyPattern.test(line)) {
-    return line.replace(keyPattern, (match, token) => {
-      const transformedTokenInLine = token.replace('#', '^').replace('b', '_');
-      let lineOut;
-      if (transformedTokenInLine[0] === 'C' && method < 0) {
-        lineOut = 'B';
-      } else {
-        lineOut = addSharpOrFlat(transformedTokenInLine, 0, method).lineOut;
+  let lineOut = '';
+  const keyPart = line.split('K:')[1];
+  for (let l = 0; l < keyPart.length; l++) {
+    if (keyPart[l] === ' ') {
+      lineOut += keyPart[l];
+    } else {
+      if (clef.indexOf(keyPart[l]) >= 0) {
+        if (clef.indexOf(keyPart[l]) === clef.length - 1 && method > 0) lineOut += 'C';
+        else if (clef.indexOf(keyPart[l]) === 0 && method < 0) lineOut += 'B';
+        else lineOut += clef[clef.indexOf(keyPart[l]) + method];
       }
-      const transformedLineOutInKey = lineOut.toUpperCase().replace('^', '#').replace('_', 'b');
-      return match.replace(token, transformedLineOutInKey);
-    });
+      lineOut += keyPart.substring(l + 1);
+      break;
+    }
   }
-  return line;
+  return `K:${lineOut}`;
 };
 
 const tuneBodyTranspose = (line, method) => {
@@ -96,24 +52,20 @@ const tuneBodyTranspose = (line, method) => {
         if (line[l] === 'B' && line[l + 1] === ',') {
           lineOut += 'C';
           l++;
-        } else if (line[l] === 'b' && line[l + 1] !== '_') {
+        } else if (line[l] === 'b') {
           lineOut += 'c\'';
         } else {
-          const sharp = addSharpOrFlat(line, l, method);
-          lineOut += sharp.lineOut;
-          l = sharp.l;
+          lineOut += notes[notes.indexOf(line[l]) + method];
         }
         // method down
       } else {
         if (line[l] === 'c' && line[l + 1] === '\'') {
           lineOut += 'b';
           l++;
-        } else if (line[l] === 'C' && line[l + 1] !== '^') {
+        } else if (line[l] === 'C') {
           lineOut += 'B,';
         } else {
-          const sharp = addSharpOrFlat(line, l, method);
-          lineOut += sharp.lineOut;
-          l = sharp.l;
+          lineOut += notes[notes.indexOf(line[l]) + method];
         }
       }
     } else {
